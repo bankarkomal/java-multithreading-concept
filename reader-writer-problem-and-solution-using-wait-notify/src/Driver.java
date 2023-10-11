@@ -86,37 +86,3 @@ class Reader implements Runnable {
 }
 
 class Writer implements Runnable {
-    Message message;
-    public Writer(Message message) {
-        this.message = message;
-    }
-    @Override
-    public void run() {
-        for (String msg : new String[]{"Hello", "how", "are", "you"}){
-            try {
-                this.message.writeMessage(msg);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        try {
-            this.message.writeMessage("Finished Writing!!!");
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-    }
-}
-
-
-
-public class Driver {
-    public static void main(String[] params) {
-        Message message = new Message(new AtomicReference<>(""), new AtomicBoolean(true));
-
-        Thread readerThread = new Thread(new Reader(message));
-        Thread writerThread = new Thread(new Writer(message));
-
-        readerThread.start();
-        writerThread.start();
-    }
-}
