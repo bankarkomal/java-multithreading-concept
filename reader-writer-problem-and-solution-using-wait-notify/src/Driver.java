@@ -85,4 +85,3 @@ class Reader implements Runnable {
     }
 }
 
-class Writer implements Runnable {

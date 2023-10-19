@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * thread safety for the variable.
  *
  * Now we are using atomic instead of volatile but the problem still exist where
- * the message written by writer is overridden by itself and hence proper reader-writer
+ * the message written by writer is overwritten by itself and hence proper reader-writer
  * functioning is missing
  */
 class Message {
